@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getChars } from "../actions";
 
 const Character = props => {
   const [smurf, setSmurf] = useState(props.character);

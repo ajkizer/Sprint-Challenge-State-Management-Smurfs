@@ -54,5 +54,31 @@ export const reducer = (state = initialState, action) => {
         isPosting: false,
         error: action.payload
       };
+
+    case DELETE_CHAR_START:
+      return {
+        ...state,
+        isPosting: true,
+        error: ""
+      };
+
+    case DELETE_CHAR_SUCCESS:
+      let updatedCharacters = state.characters.filter(
+        char => char.id !== action.payload.id
+      );
+      return {
+        ...state,
+        characters: [...updatedCharacters],
+        isPosting: false
+      };
+
+    case DELETE_CHAR_FAILURE:
+      return {
+        ...state,
+        isPosting: false,
+        error: action.payload
+      };
+    default:
+      return state;
   }
 };

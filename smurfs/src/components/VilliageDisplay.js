@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getChars } from "../actions";
+import { getChars, deleteSmurf } from "../actions";
 import Character from "./Character";
 
 const VillageDisplay = ({
@@ -22,7 +22,11 @@ const VillageDisplay = ({
   return (
     <div>
       {characters.map(character => (
-        <Character character={character} getChars={getChars} />
+        <Character
+          character={character}
+          deleteSmurf={deleteSmurf}
+          getChars={getChars}
+        />
       ))}
     </div>
   );
@@ -39,5 +43,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getChars }
+  { getChars, deleteSmurf }
 )(VillageDisplay);
