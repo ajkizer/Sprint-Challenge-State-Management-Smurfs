@@ -36,17 +36,3 @@ export const addSmurf = smurf => dispatch => {
       dispatch({ type: ADD_CHAR_FAILURE, payload: err });
     });
 };
-
-export const deleteSmurf = smurf => dispatch => {
-  dispatch({ type: DELETE_CHAR_START });
-  axios
-    .delete(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
-    .then(res => {
-      dispatch({ type: DELETE_CHAR_SUCCESS, payload: res.data });
-      getChars();
-    })
-    .catch(err => {
-      console.log(err);
-      dispatch({ type: DELETE_CHAR_FAILURE, payload: err });
-    });
-};
